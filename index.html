@@ -11,125 +11,567 @@
 </head>
 <body>
 
-    <header class="encabezado">
+    <!-- Sprite de íconos vectoriales (SVG). Se reutilizan con <use href="#id">. -->
+    <svg class="sprite-iconos" width="0" height="0" aria-hidden="true" focusable="false">
+        <symbol id="i-nube" viewBox="0 0 24 24">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+        </symbol>
+        <symbol id="i-escudo" viewBox="0 0 24 24">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            <path d="m9 12 2 2 4-4"/>
+        </symbol>
+        <symbol id="i-rayo" viewBox="0 0 24 24">
+            <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>
+        </symbol>
+        <symbol id="i-equipo" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </symbol>
+        <symbol id="i-historial" viewBox="0 0 24 24">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+            <path d="M12 7v5l4 2"/>
+        </symbol>
+        <symbol id="i-dispositivos" viewBox="0 0 24 24">
+            <rect x="2" y="3" width="14" height="10" rx="2"/>
+            <path d="M6 17h6"/>
+            <path d="M9 13v4"/>
+            <rect x="16" y="9" width="6" height="12" rx="1.5"/>
+            <path d="M19 18h.01"/>
+        </symbol>
+        <symbol id="i-buscar" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+            <path d="M20 6 9 17l-5-5"/>
+        </symbol>
+        <symbol id="i-check-circulo" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="m9 12 2 2 4-4"/>
+        </symbol>
+        <symbol id="i-estrella" viewBox="0 0 24 24">
+            <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
+        </symbol>
+        <symbol id="i-luna" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </symbol>
+        <symbol id="i-sol" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/>
+            <path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/>
+            <path d="m19.07 4.93-1.41 1.41"/>
+        </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+            <path d="M4 6h16"/>
+            <path d="M4 12h16"/>
+            <path d="M4 18h16"/>
+        </symbol>
+        <symbol id="i-cerrar" viewBox="0 0 24 24">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+        </symbol>
+        <symbol id="i-flecha-derecha" viewBox="0 0 24 24">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+        </symbol>
+        <symbol id="i-flecha-arriba" viewBox="0 0 24 24">
+            <path d="m5 12 7-7 7 7"/>
+            <path d="M12 19V5"/>
+        </symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6"/>
+        </symbol>
+        <symbol id="i-usuario-mas" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M19 8v6"/>
+            <path d="M22 11h-6"/>
+        </symbol>
+        <symbol id="i-subir" viewBox="0 0 24 24">
+            <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>
+            <path d="M12 12v9"/>
+            <path d="m16 16-4-4-4 4"/>
+        </symbol>
+        <symbol id="i-compartir" viewBox="0 0 24 24">
+            <circle cx="18" cy="5" r="3"/>
+            <circle cx="6" cy="12" r="3"/>
+            <circle cx="18" cy="19" r="3"/>
+            <path d="m8.59 13.51 6.83 3.98"/>
+            <path d="m15.41 6.51-6.82 3.98"/>
+        </symbol>
+        <symbol id="i-correo" viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </symbol>
+        <symbol id="i-telefono" viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </symbol>
+        <symbol id="i-ubicacion" viewBox="0 0 24 24">
+            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+            <circle cx="12" cy="10" r="3"/>
+        </symbol>
+        <symbol id="i-github" viewBox="0 0 24 24">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+            <path d="M9 18c-4.51 2-5-2-7-2"/>
+        </symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+        </symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <path d="M17.5 6.5h.01"/>
+        </symbol>
+    </svg>
+
+    <header class="encabezado" id="inicio">
         <div class="contenedor encabezado-contenido">
-            <a href="#" class="logo">☁️ NubeFlow</a>
-            <nav class="menu">
+            <a href="#inicio" class="logo" aria-label="NubeFlow, ir al inicio">
+                <svg class="icono logo-icono" width="28" height="28" aria-hidden="true"><use href="#i-nube"></use></svg>
+                <span>NubeFlow</span>
+            </a>
+
+            <nav class="menu" id="menu-principal" aria-label="Navegación principal">
                 <ul>
                     <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
                     <li><a href="#planes">Planes</a></li>
                     <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#preguntas">Preguntas</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
-            <button id="btn-tema" class="boton boton-secundario" type="button">🌙 Modo oscuro</button>
+
+            <div class="encabezado-acciones">
+                <button id="btn-tema" class="boton-icono" type="button" aria-label="Activar modo oscuro">
+                    <svg class="icono icono-luna" width="20" height="20" aria-hidden="true"><use href="#i-luna"></use></svg>
+                    <svg class="icono icono-sol" width="20" height="20" aria-hidden="true"><use href="#i-sol"></use></svg>
+                </button>
+                <a href="#planes" class="boton boton-principal boton-pequeno ocultar-movil">Empezar gratis</a>
+                <button id="btn-menu" class="boton-icono menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">
+                    <svg class="icono icono-abrir" width="22" height="22" aria-hidden="true"><use href="#i-menu"></use></svg>
+                    <svg class="icono icono-cerrar" width="22" height="22" aria-hidden="true"><use href="#i-cerrar"></use></svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
 
+        <!-- ===== Hero ===== -->
         <section class="hero">
-            <div class="contenedor">
-                <h1 class="hero-titulo">Tus archivos, en cualquier lugar y en cualquier momento</h1>
-                <p class="hero-subtitulo">
-                    NubeFlow guarda, sincroniza y comparte tus documentos de forma segura.
-                    Empieza gratis y escala cuando lo necesites.
-                </p>
-                <button id="btn-saludo" class="boton boton-principal" type="button">¡Quiero empezar!</button>
+            <div class="contenedor hero-contenido">
+                <div class="hero-texto">
+                    <p class="hero-etiqueta">Nuevo: sincronización 2x más rápida</p>
+                    <h1 class="hero-titulo">Tus archivos, en cualquier lugar y en cualquier momento</h1>
+                    <p class="hero-subtitulo">
+                        NubeFlow guarda, sincroniza y comparte tus documentos de forma segura.
+                        Empieza gratis y escala cuando lo necesites.
+                    </p>
+                    <div class="hero-acciones">
+                        <button id="btn-saludo" class="boton boton-claro" type="button" data-accion="saludo">
+                            Quiero empezar
+                            <svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-flecha-derecha"></use></svg>
+                        </button>
+                        <a href="#como-funciona" class="boton boton-contorno">Ver cómo funciona</a>
+                    </div>
+                    <ul class="hero-beneficios">
+                        <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check-circulo"></use></svg> 15 GB gratis</li>
+                        <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check-circulo"></use></svg> Sin tarjeta de crédito</li>
+                        <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check-circulo"></use></svg> Cancela cuando quieras</li>
+                    </ul>
+                </div>
+
+                <div class="hero-visual">
+                    <svg class="hero-ilustracion" viewBox="0 0 480 400" width="480" height="400" role="img" aria-labelledby="ilustracion-titulo">
+                        <title id="ilustracion-titulo">Archivos sincronizándose con la nube de NubeFlow</title>
+                        <circle class="ilus-circulo" cx="240" cy="200" r="185"/>
+                        <circle class="ilus-circulo-interno" cx="240" cy="200" r="130"/>
+
+                        <!-- Conectores punteados -->
+                        <path class="ilus-conector" d="M112 160 C 130 160, 135 175, 150 180"/>
+                        <path class="ilus-conector" d="M382 130 C 365 130, 360 150, 352 158"/>
+
+                        <!-- Nube principal -->
+                        <g class="ilus-nube">
+                            <circle cx="192" cy="172" r="50"/>
+                            <circle cx="260" cy="140" r="64"/>
+                            <circle cx="324" cy="180" r="44"/>
+                            <rect x="150" y="168" width="212" height="62" rx="31"/>
+                        </g>
+                        <path class="ilus-flecha" d="M256 212 V 150 M 234 172 L 256 150 L 278 172"/>
+
+                        <!-- Panel de archivos -->
+                        <rect class="ilus-panel" x="110" y="252" width="260" height="112" rx="14"/>
+                        <rect class="ilus-acento" x="128" y="270" width="18" height="18" rx="4"/>
+                        <rect class="ilus-linea" x="156" y="275" width="150" height="8" rx="4"/>
+                        <circle class="ilus-ok" cx="348" cy="279" r="7"/>
+                        <rect class="ilus-acento ilus-acento-2" x="128" y="299" width="18" height="18" rx="4"/>
+                        <rect class="ilus-linea" x="156" y="304" width="118" height="8" rx="4"/>
+                        <circle class="ilus-ok" cx="348" cy="308" r="7"/>
+                        <rect class="ilus-acento ilus-acento-3" x="128" y="328" width="18" height="18" rx="4"/>
+                        <rect class="ilus-linea" x="156" y="333" width="168" height="8" rx="4"/>
+                        <circle class="ilus-cargando" cx="348" cy="337" r="7"/>
+
+                        <!-- Archivos flotantes -->
+                        <g class="ilus-flotar">
+                            <rect class="ilus-archivo" x="40" y="118" width="72" height="90" rx="10"/>
+                            <rect class="ilus-archivo-linea" x="54" y="138" width="44" height="6" rx="3"/>
+                            <rect class="ilus-archivo-linea" x="54" y="152" width="34" height="6" rx="3"/>
+                            <rect class="ilus-archivo-linea" x="54" y="166" width="40" height="6" rx="3"/>
+                            <rect class="ilus-archivo-linea" x="54" y="180" width="26" height="6" rx="3"/>
+                        </g>
+                        <g class="ilus-flotar ilus-flotar-lento">
+                            <rect class="ilus-archivo" x="382" y="88" width="64" height="80" rx="10"/>
+                            <circle class="ilus-archivo-linea" cx="402" cy="112" r="7"/>
+                            <path class="ilus-montana" d="M392 156 L 410 132 L 422 146 L 430 138 L 438 156 Z"/>
+                        </g>
+
+                        <!-- Destellos -->
+                        <circle class="ilus-punto" cx="92" cy="286" r="5"/>
+                        <circle class="ilus-punto" cx="408" cy="262" r="4"/>
+                        <circle class="ilus-punto" cx="150" cy="70" r="3"/>
+                        <circle class="ilus-punto" cx="352" cy="58" r="5"/>
+                    </svg>
+                </div>
             </div>
         </section>
 
+        <!-- ===== Clientes ===== -->
+        <section class="clientes" aria-label="Empresas que confían en NubeFlow">
+            <div class="contenedor">
+                <p class="clientes-titulo">Más de 2.000 equipos ya trabajan con NubeFlow</p>
+                <ul class="clientes-lista">
+                    <li>Andina Labs</li>
+                    <li>Café Digital</li>
+                    <li>Rumbo Studio</li>
+                    <li>Cóndor Tech</li>
+                    <li>Pacífico Data</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== Características ===== -->
         <section id="caracteristicas" class="seccion caracteristicas">
             <div class="contenedor">
-                <h2 class="seccion-titulo">¿Por qué elegir NubeFlow?</h2>
+                <div class="seccion-encabezado">
+                    <p class="seccion-etiqueta">Características</p>
+                    <h2 class="seccion-titulo">¿Por qué elegir NubeFlow?</h2>
+                    <p class="seccion-descripcion">Todo lo que necesitas para guardar, organizar y compartir tu información sin complicaciones.</p>
+                </div>
                 <div class="grid-tarjetas">
-                    <article class="tarjeta">
-                        <span class="tarjeta-icono">🔒</span>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-escudo"></use></svg></span>
                         <h3>Seguridad total</h3>
                         <p>Cifrado de extremo a extremo y copias de seguridad automáticas en varias regiones.</p>
                     </article>
-                    <article class="tarjeta">
-                        <span class="tarjeta-icono">⚡</span>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-rayo"></use></svg></span>
                         <h3>Sincronización rápida</h3>
                         <p>Tus cambios aparecen al instante en el computador, el celular y la web.</p>
                     </article>
-                    <article class="tarjeta">
-                        <span class="tarjeta-icono">🤝</span>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-equipo"></use></svg></span>
                         <h3>Trabajo en equipo</h3>
                         <p>Comparte carpetas, asigna permisos y colabora en tiempo real con tu equipo.</p>
                     </article>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-historial"></use></svg></span>
+                        <h3>Historial de versiones</h3>
+                        <p>Recupera cualquier versión anterior de tus archivos hasta 180 días atrás.</p>
+                    </article>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-dispositivos"></use></svg></span>
+                        <h3>Multiplataforma</h3>
+                        <p>Aplicaciones para Windows, macOS, Linux, Android e iOS, además del navegador.</p>
+                    </article>
+                    <article class="tarjeta revelar">
+                        <span class="tarjeta-icono"><svg class="icono" width="26" height="26" aria-hidden="true"><use href="#i-buscar"></use></svg></span>
+                        <h3>Búsqueda inteligente</h3>
+                        <p>Encuentra archivos por nombre, contenido o incluso por el texto dentro de tus imágenes.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <!-- ===== Cómo funciona ===== -->
+        <section id="como-funciona" class="seccion pasos">
+            <div class="contenedor">
+                <div class="seccion-encabezado">
+                    <p class="seccion-etiqueta">Cómo funciona</p>
+                    <h2 class="seccion-titulo">Empieza en tres pasos</h2>
+                    <p class="seccion-descripcion">En menos de un minuto tendrás tus archivos seguros en la nube.</p>
+                </div>
+                <ol class="grid-pasos">
+                    <li class="paso revelar">
+                        <span class="paso-numero">1</span>
+                        <span class="paso-icono"><svg class="icono" width="30" height="30" aria-hidden="true"><use href="#i-usuario-mas"></use></svg></span>
+                        <h3>Crea tu cuenta</h3>
+                        <p>Regístrate con tu correo. No necesitas tarjeta de crédito.</p>
+                    </li>
+                    <li class="paso revelar">
+                        <span class="paso-numero">2</span>
+                        <span class="paso-icono"><svg class="icono" width="30" height="30" aria-hidden="true"><use href="#i-subir"></use></svg></span>
+                        <h3>Sube tus archivos</h3>
+                        <p>Arrastra carpetas completas o instala la app para sincronizar automáticamente.</p>
+                    </li>
+                    <li class="paso revelar">
+                        <span class="paso-numero">3</span>
+                        <span class="paso-icono"><svg class="icono" width="30" height="30" aria-hidden="true"><use href="#i-compartir"></use></svg></span>
+                        <h3>Comparte y colabora</h3>
+                        <p>Envía un enlace o invita a tu equipo a editar contigo en tiempo real.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ===== Cifras ===== -->
+        <section class="cifras" aria-label="NubeFlow en cifras">
+            <div class="contenedor grid-cifras">
+                <div class="cifra">
+                    <p class="cifra-valor" data-objetivo="50000" data-prefijo="+">+50.000</p>
+                    <p class="cifra-texto">usuarios activos</p>
+                </div>
+                <div class="cifra">
+                    <p class="cifra-valor" data-objetivo="99.9" data-decimales="1" data-sufijo=" %">99,9 %</p>
+                    <p class="cifra-texto">de disponibilidad</p>
+                </div>
+                <div class="cifra">
+                    <p class="cifra-valor" data-objetivo="12">12</p>
+                    <p class="cifra-texto">países</p>
+                </div>
+                <div class="cifra">
+                    <p class="cifra-valor" data-objetivo="2" data-sufijo=" PB">2 PB</p>
+                    <p class="cifra-texto">de datos protegidos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Planes ===== -->
         <section id="planes" class="seccion planes">
             <div class="contenedor">
-                <h2 class="seccion-titulo">Planes para cada necesidad</h2>
-                <div class="grid-tarjetas">
-                    <article class="tarjeta plan">
+                <div class="seccion-encabezado">
+                    <p class="seccion-etiqueta">Precios</p>
+                    <h2 class="seccion-titulo">Planes para cada necesidad</h2>
+                    <p class="seccion-descripcion">Cambia de plan o cancela en cualquier momento.</p>
+                </div>
+
+                <div class="selector-periodo" role="group" aria-label="Periodo de facturación">
+                    <button type="button" class="periodo activo" data-periodo="mensual" aria-pressed="true">Mensual</button>
+                    <button type="button" class="periodo" data-periodo="anual" aria-pressed="false">Anual <span class="ahorro">-20 %</span></button>
+                </div>
+
+                <div class="grid-tarjetas grid-planes">
+                    <article class="tarjeta plan revelar">
                         <h3>Básico</h3>
-                        <p class="plan-precio">$0 <span>/ mes</span></p>
+                        <p class="plan-descripcion">Para uso personal y estudiantes.</p>
+                        <p class="plan-precio"><span class="precio-valor" data-mensual="$0" data-anual="$0">$0</span> <span class="precio-periodo">/ mes</span></p>
+                        <p class="plan-nota" data-mensual="Gratis para siempre" data-anual="Gratis para siempre">Gratis para siempre</p>
                         <ul class="plan-lista">
-                            <li>15 GB de almacenamiento</li>
-                            <li>1 usuario</li>
-                            <li>Soporte por correo</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> 15 GB de almacenamiento</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> 1 usuario</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Historial de 30 días</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Soporte por correo</li>
                         </ul>
+                        <a href="#contacto" class="boton boton-contorno-primario">Empezar gratis</a>
                     </article>
-                    <article class="tarjeta plan plan-destacado">
+                    <article class="tarjeta plan plan-destacado revelar">
                         <p class="plan-etiqueta">Más popular</p>
                         <h3>Pro</h3>
-                        <p class="plan-precio">$9 <span>/ mes</span></p>
+                        <p class="plan-descripcion">Para freelancers y equipos pequeños.</p>
+                        <p class="plan-precio"><span class="precio-valor" data-mensual="$9" data-anual="$7">$9</span> <span class="precio-periodo">/ mes</span></p>
+                        <p class="plan-nota" data-mensual="Facturado mensualmente" data-anual="$84 facturados al año">Facturado mensualmente</p>
                         <ul class="plan-lista">
-                            <li>1 TB de almacenamiento</li>
-                            <li>Hasta 5 usuarios</li>
-                            <li>Historial de versiones</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> 1 TB de almacenamiento</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Hasta 5 usuarios</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Historial de 180 días</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Soporte prioritario</li>
                         </ul>
+                        <a href="#contacto" class="boton boton-principal">Probar 14 días gratis</a>
                     </article>
-                    <article class="tarjeta plan">
+                    <article class="tarjeta plan revelar">
                         <h3>Empresa</h3>
-                        <p class="plan-precio">$29 <span>/ mes</span></p>
+                        <p class="plan-descripcion">Para organizaciones en crecimiento.</p>
+                        <p class="plan-precio"><span class="precio-valor" data-mensual="$29" data-anual="$23">$29</span> <span class="precio-periodo">/ mes</span></p>
+                        <p class="plan-nota" data-mensual="Facturado mensualmente" data-anual="$276 facturados al año">Facturado mensualmente</p>
                         <ul class="plan-lista">
-                            <li>Almacenamiento ilimitado</li>
-                            <li>Usuarios ilimitados</li>
-                            <li>Soporte 24/7</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Almacenamiento ilimitado</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Usuarios ilimitados</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Controles de administración</li>
+                            <li><svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-check"></use></svg> Soporte 24/7</li>
                         </ul>
+                        <a href="#contacto" class="boton boton-contorno-primario">Hablar con ventas</a>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- ===== Testimonios ===== -->
         <section id="testimonios" class="seccion testimonios">
             <div class="contenedor">
-                <h2 class="seccion-titulo">Lo que dicen nuestros usuarios</h2>
+                <div class="seccion-encabezado">
+                    <p class="seccion-etiqueta">Testimonios</p>
+                    <h2 class="seccion-titulo">Lo que dicen nuestros usuarios</h2>
+                </div>
                 <div class="grid-tarjetas">
-                    <blockquote class="tarjeta testimonio">
-                        <p>"Dejé de perder archivos. Todo está en NubeFlow y lo encuentro en segundos."</p>
-                        <cite>— Laura, diseñadora</cite>
-                    </blockquote>
-                    <blockquote class="tarjeta testimonio">
-                        <p>"Mi equipo trabaja desde tres ciudades y la sincronización nunca falla."</p>
-                        <cite>— Andrés, líder de proyecto</cite>
-                    </blockquote>
-                    <blockquote class="tarjeta testimonio">
-                        <p>"El plan gratuito fue suficiente para toda mi carrera universitaria."</p>
-                        <cite>— Camila, estudiante</cite>
-                    </blockquote>
+                    <figure class="tarjeta testimonio revelar">
+                        <div class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                        </div>
+                        <blockquote>
+                            <p>"Dejé de perder archivos. Todo está en NubeFlow y lo encuentro en segundos."</p>
+                        </blockquote>
+                        <figcaption class="testimonio-autor">
+                            <span class="avatar" aria-hidden="true">LM</span>
+                            <span><strong>Laura Martínez</strong><br>Diseñadora gráfica</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="tarjeta testimonio revelar">
+                        <div class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                        </div>
+                        <blockquote>
+                            <p>"Mi equipo trabaja desde tres ciudades y la sincronización nunca falla."</p>
+                        </blockquote>
+                        <figcaption class="testimonio-autor">
+                            <span class="avatar avatar-2" aria-hidden="true">AR</span>
+                            <span><strong>Andrés Rojas</strong><br>Líder de proyecto</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="tarjeta testimonio revelar">
+                        <div class="estrellas" role="img" aria-label="5 de 5 estrellas">
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                            <svg class="icono icono-estrella" width="18" height="18" aria-hidden="true"><use href="#i-estrella"></use></svg>
+                        </div>
+                        <blockquote>
+                            <p>"El plan gratuito fue suficiente para toda mi carrera universitaria."</p>
+                        </blockquote>
+                        <figcaption class="testimonio-autor">
+                            <span class="avatar avatar-3" aria-hidden="true">CG</span>
+                            <span><strong>Camila Gómez</strong><br>Estudiante de ingeniería</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
 
+        <!-- ===== Preguntas frecuentes ===== -->
+        <section id="preguntas" class="seccion preguntas">
+            <div class="contenedor contenedor-estrecho">
+                <div class="seccion-encabezado">
+                    <p class="seccion-etiqueta">Preguntas frecuentes</p>
+                    <h2 class="seccion-titulo">¿Tienes dudas?</h2>
+                </div>
+                <div class="lista-preguntas">
+                    <details class="pregunta">
+                        <summary>¿El plan Básico es realmente gratis?<svg class="icono pregunta-icono" width="20" height="20" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+                        <p>Sí. Tienes 15 GB para siempre, sin tarjeta de crédito y sin límite de tiempo.</p>
+                    </details>
+                    <details class="pregunta">
+                        <summary>¿Qué tan seguros están mis archivos?<svg class="icono pregunta-icono" width="20" height="20" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+                        <p>Ciframos cada archivo antes de enviarlo y lo replicamos en al menos tres centros de datos distintos.</p>
+                    </details>
+                    <details class="pregunta">
+                        <summary>¿Puedo cambiar de plan más adelante?<svg class="icono pregunta-icono" width="20" height="20" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+                        <p>Claro. Puedes subir o bajar de plan cuando quieras y solo pagas la diferencia proporcional.</p>
+                    </details>
+                    <details class="pregunta">
+                        <summary>¿Funciona sin conexión a internet?<svg class="icono pregunta-icono" width="20" height="20" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+                        <p>Sí. Las carpetas marcadas como "disponibles sin conexión" se sincronizan en cuanto vuelves a conectarte.</p>
+                    </details>
+                    <details class="pregunta">
+                        <summary>¿Ofrecen descuentos para estudiantes?<svg class="icono pregunta-icono" width="20" height="20" aria-hidden="true"><use href="#i-chevron"></use></svg></summary>
+                        <p>Sí. Con tu correo institucional obtienes el plan Pro con un 50 % de descuento.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Llamado a la acción ===== -->
+        <section class="cta">
+            <div class="contenedor cta-contenido">
+                <div>
+                    <h2>¿Listo para llevar tus archivos a la nube?</h2>
+                    <p>Crea tu cuenta gratis en menos de un minuto.</p>
+                </div>
+                <button class="boton boton-claro" type="button" data-accion="saludo">
+                    Crear cuenta gratis
+                    <svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-flecha-derecha"></use></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== Contacto ===== -->
         <section id="contacto" class="seccion contacto">
-            <div class="contenedor">
-                <h2 class="seccion-titulo">¿Tienes preguntas?</h2>
-                <p>Escríbenos y te respondemos en menos de 24 horas.</p>
+            <div class="contenedor contacto-contenido">
+                <div class="contacto-info">
+                    <p class="seccion-etiqueta">Contacto</p>
+                    <h2 class="seccion-titulo">Hablemos</h2>
+                    <p>Escríbenos y te respondemos en menos de 24 horas.</p>
+                    <ul class="contacto-lista">
+                        <li>
+                            <span class="contacto-icono"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-correo"></use></svg></span>
+                            <span><strong>Correo</strong><br>hola@nubeflow.example</span>
+                        </li>
+                        <li>
+                            <span class="contacto-icono"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-telefono"></use></svg></span>
+                            <span><strong>Teléfono</strong><br>+57 601 000 0000</span>
+                        </li>
+                        <li>
+                            <span class="contacto-icono"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-ubicacion"></use></svg></span>
+                            <span><strong>Oficina</strong><br>Bogotá, Colombia</span>
+                        </li>
+                    </ul>
+                </div>
+
                 <form class="formulario" action="#">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué te podemos ayudar?"></textarea>
-                    <button type="submit" class="boton boton-principal">Enviar mensaje</button>
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="campo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+                    <div class="campo">
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto">
+                            <option>Información general</option>
+                            <option>Planes y precios</option>
+                            <option>Soporte técnico</option>
+                            <option>Ventas para empresas</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿En qué te podemos ayudar?" required></textarea>
+                    </div>
+                    <button type="submit" class="boton boton-principal">
+                        Enviar mensaje
+                        <svg class="icono" width="18" height="18" aria-hidden="true"><use href="#i-flecha-derecha"></use></svg>
+                    </button>
+                    <p class="formulario-estado" id="formulario-estado" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </section>
@@ -137,10 +579,52 @@
     </main>
 
     <footer class="pie">
-        <div class="contenedor">
-            <p>&copy; 2026 NubeFlow (empresa ficticia). Proyecto académico de Computación en la Nube.</p>
+        <div class="contenedor pie-contenido">
+            <div class="pie-marca">
+                <a href="#inicio" class="logo">
+                    <svg class="icono logo-icono" width="28" height="28" aria-hidden="true"><use href="#i-nube"></use></svg>
+                    <span>NubeFlow</span>
+                </a>
+                <p>Almacenamiento en la nube simple, seguro y rápido para personas y equipos.</p>
+                <ul class="redes">
+                    <li><a href="https://github.com/Dbuitrago15/landing-page-git-colaborativo" aria-label="Repositorio en GitHub"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-github"></use></svg></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-linkedin"></use></svg></a></li>
+                    <li><a href="#" aria-label="Instagram"><svg class="icono" width="20" height="20" aria-hidden="true"><use href="#i-instagram"></use></svg></a></li>
+                </ul>
+            </div>
+            <div class="pie-columna">
+                <h3>Producto</h3>
+                <ul>
+                    <li><a href="#caracteristicas">Características</a></li>
+                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                </ul>
+            </div>
+            <div class="pie-columna">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#testimonios">Clientes</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#">Trabaja con nosotros</a></li>
+                </ul>
+            </div>
+            <div class="pie-columna">
+                <h3>Soporte</h3>
+                <ul>
+                    <li><a href="#preguntas">Preguntas frecuentes</a></li>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Estado del servicio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenedor pie-inferior">
+            <p>&copy; <span id="anio">2026</span> NubeFlow (empresa ficticia). Proyecto académico de Computación en la Nube.</p>
         </div>
     </footer>
+
+    <a href="#inicio" id="btn-arriba" class="boton-arriba" aria-label="Volver arriba">
+        <svg class="icono" width="22" height="22" aria-hidden="true"><use href="#i-flecha-arriba"></use></svg>
+    </a>
 
 </body>
 </html>
