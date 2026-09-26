@@ -1,0 +1,371 @@
+/* =========================================================
+   NubeFlow - Hoja de estilos
+   Estudiante 2 (El Diseñador) - rama-css
+   ========================================================= */
+
+/* ---------- Variables de diseño ---------- */
+:root {
+    --color-primario: #2563eb;
+    --color-primario-oscuro: #1e40af;
+    --color-acento: #06b6d4;
+    --color-fondo: #f8fafc;
+    --color-superficie: #ffffff;
+    --color-texto: #1e293b;
+    --color-texto-suave: #64748b;
+    --color-borde: #e2e8f0;
+    --sombra: 0 10px 25px rgba(15, 23, 42, 0.08);
+    --radio: 14px;
+    --fuente: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Tema oscuro: se activa agregando la clase .tema-oscuro al <body> */
+body.tema-oscuro {
+    --color-fondo: #0f172a;
+    --color-superficie: #1e293b;
+    --color-texto: #e2e8f0;
+    --color-texto-suave: #94a3b8;
+    --color-borde: #334155;
+    --sombra: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Reset y base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contenedor {
+    width: min(1100px, 100% - 2rem);
+    margin-inline: auto;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+    display: inline-block;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton:hover {
+    transform: translateY(-2px);
+}
+
+.boton-principal {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.boton-principal:hover {
+    background-color: var(--color-primario-oscuro);
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--color-texto);
+    border: 2px solid var(--color-borde);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+}
+
+/* ---------- Encabezado ---------- */
+.encabezado {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+    transition: background-color 0.3s ease;
+}
+
+.encabezado-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primario);
+}
+
+.menu ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.menu a {
+    color: var(--color-texto-suave);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.menu a:hover {
+    color: var(--color-primario);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-acento) 100%);
+    color: #ffffff;
+    text-align: center;
+    padding-block: 6rem;
+}
+
+.hero-titulo {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 1.2rem;
+}
+
+.hero-subtitulo {
+    font-size: 1.15rem;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+    opacity: 0.92;
+}
+
+.hero .boton-principal {
+    background-color: #ffffff;
+    color: var(--color-primario);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hero .boton-principal:hover {
+    background-color: #eff6ff;
+}
+
+/* ---------- Secciones ---------- */
+.seccion {
+    padding-block: 5rem;
+}
+
+.seccion-titulo {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.grid-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ---------- Tarjetas ---------- */
+.tarjeta {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 2rem;
+    box-shadow: var(--sombra);
+    transition: transform 0.25s ease, background-color 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-6px);
+}
+
+.tarjeta h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.25rem;
+}
+
+.tarjeta p {
+    color: var(--color-texto-suave);
+}
+
+.tarjeta-icono {
+    display: inline-block;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Planes ---------- */
+.planes {
+    background-color: var(--color-superficie);
+    transition: background-color 0.3s ease;
+}
+
+.plan {
+    position: relative;
+    text-align: center;
+    background-color: var(--color-fondo);
+}
+
+.plan-precio {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--color-texto) !important;
+    margin-block: 0.5rem 1.2rem;
+}
+
+.plan-precio span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-texto-suave);
+}
+
+.plan-lista {
+    list-style: none;
+    color: var(--color-texto-suave);
+}
+
+.plan-lista li {
+    padding-block: 0.5rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.plan-destacado {
+    border: 2px solid var(--color-primario);
+    transform: scale(1.04);
+}
+
+.plan-destacado:hover {
+    transform: scale(1.04) translateY(-6px);
+}
+
+.plan-etiqueta {
+    position: absolute;
+    top: -0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primario);
+    color: #ffffff !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.9rem;
+    border-radius: 999px;
+}
+
+/* ---------- Testimonios ---------- */
+.testimonio p {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonio cite {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--color-primario);
+}
+
+/* ---------- Contacto ---------- */
+.contacto {
+    background-color: var(--color-superficie);
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.contacto .seccion-titulo {
+    margin-bottom: 0.8rem;
+}
+
+.contacto > .contenedor > p {
+    color: var(--color-texto-suave);
+    margin-bottom: 2rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 520px;
+    margin-inline: auto;
+    text-align: left;
+}
+
+.formulario label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.formulario input,
+.formulario textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 1px;
+}
+
+.formulario .boton {
+    align-self: center;
+    margin-top: 0.5rem;
+}
+
+/* ---------- Pie de página ---------- */
+.pie {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding-block: 2rem;
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .encabezado-contenido {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding-block: 4rem;
+    }
+
+    .seccion {
+        padding-block: 3.5rem;
+    }
+
+    .plan-destacado,
+    .plan-destacado:hover {
+        transform: none;
+    }
+}
